@@ -8,6 +8,7 @@ const myEventsFunction = function () {
     circle = document.querySelector('#circle'),
     eBtn = document.querySelector('#e_btn');
 
+  // Функция смены фона у квадрата
   const changeColor = function () {
     if ((inputTypeText.value).trim()) {
       square.style.backgroundColor = inputTypeText.value;
@@ -16,23 +17,22 @@ const myEventsFunction = function () {
 
   }
 
-  btn.addEventListener('click', changeColor);
-
-  eBtn.style.display = "none";
-
-  // input range
-  rangeSpan.textContent = inputTypeRange.value + "%";
-  circle.style.width = inputTypeRange.value + "%";
-  circle.style.height = inputTypeRange.value + "%";
-
-  const changeRange = function (e) {
-
+  // Функция изменения габаритов круга
+  const changeRange = function () {
     rangeSpan.textContent = inputTypeRange.value + "%";
     circle.style.width = inputTypeRange.value + "%";
     circle.style.height = inputTypeRange.value + "%";
-    circle.style.backgroundColor = `rgba(255,255,${inputTypeRange.value})`;
+    circle.style.backgroundColor = `rgba(255,255,${inputTypeRange.value * 2})`;
 
   }
+
+  // базовые найстройки страницы
+  changeRange();
+  // скрытие кнопки
+  eBtn.style.display = "none";
+  
+  // Обработчики событий
+  btn.addEventListener('click', changeColor);
   inputTypeRange.addEventListener('input', changeRange);
 }
 
